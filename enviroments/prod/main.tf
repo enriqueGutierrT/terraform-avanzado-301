@@ -11,10 +11,18 @@ provider "aws" {
   region = var.aws_region
 }
 
-locals {
-  name_prefix = "${var.project}-${var.environment}"
+module "naming" {
+  source      = "../../modules/naming"
+  project     = var.project
+  environment = var.environment
 }
 
-output "name_prefix" {
-  value = local.name_prefix
+module "tags" {
+  source      = "../../modules/tagging"
+  project     = var.project
+  environment = var.environment
+  extra_tags  = { CostCenter = var.costCenter }
 }
+
+output "name_prefix" { value = module.naming.prefix }
+output "common_tags" { value = module.tags.tags }
