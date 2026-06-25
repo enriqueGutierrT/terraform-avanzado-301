@@ -13,3 +13,9 @@ variable "aws_region" {
   description = "Región de AWS de referencia"
   default     = "us-east-2"
 }
+
+variable "costCenter" {
+  type        = string
+  description = "Cost Center name"
+  default     = "Valladolid"
+}

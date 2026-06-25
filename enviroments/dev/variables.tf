@@ -13,3 +13,9 @@ variable "aws_region" {
   description = "Región de AWS de referencia"
   default     = "us-east-2"
 }
+
+variable "lab_user" {
+  type        = string
+  description = "usuario de la"
+  default     = "usuario-11"
+}
